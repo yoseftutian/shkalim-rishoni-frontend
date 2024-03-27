@@ -1,0 +1,19 @@
+.fun-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+
+.fun-grid-paragraph {
+  display: flex;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fun-grid-paragraph p {
+  font-size: 30px;
+  color: black;
+}

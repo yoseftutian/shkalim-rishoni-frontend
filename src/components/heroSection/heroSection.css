@@ -1,0 +1,29 @@
+.hero-container {
+  height: calc(100vh - var(--nav-height));
+  width: 100%;
+  position: relative;
+}
+
+.hero-container img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  position: absolute;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: absolute;
+}
+
+.hero-content h1 {
+  font-size: 160px;
+}
+
+.hero-content h2 {
+  font-size: 100px;
+}
