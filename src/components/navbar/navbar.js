@@ -6,10 +6,12 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import RegistrationModal from "../registrationModal/registrationModal";
 import { useLoginContext } from "../../contexts/LoginContext";
+import LoginModal from "../loginModal/loginModal";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const { token } = useLoginContext();
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
+  const { token, setToken } = useLoginContext();
   return (
     <nav className="container">
       <ul className="link-list">
@@ -20,16 +22,19 @@ export default function Navbar() {
           ))}
       </ul>
       {token ? (
-        <Button>SignOut</Button>
+        <Button onClick={() => setToken(null)}>SignOut</Button>
       ) : (
         <div className="row">
-          <Button variant="outlined">Register</Button>
-          <Button onClick={() => setOpen(true)} variant="outlined">
+          <Button onClick={() => setOpenRegister(true)} variant="outlined">
+            Register
+          </Button>
+          <Button onClick={() => setOpenLogin(true)} variant="outlined">
             Login
           </Button>
         </div>
       )}
-      {open && <RegistrationModal setOpen={setOpen} />}
+      {openLogin && <LoginModal setOpen={setOpenLogin} />}
+      {openRegister && <RegistrationModal setOpen={setOpenRegister} />}
     </nav>
   );
 }

@@ -1,22 +1,22 @@
 import { Close } from "@mui/icons-material";
 import { Button, CircularProgress, TextField } from "@mui/material";
-import "./registrationModal.css";
-import { register } from "../../utils/apiCalls";
+import "./loginModal.css";
+import { login } from "../../utils/apiCalls";
+import { useLoginContext } from "../../contexts/LoginContext";
 import { useLoadingContext } from "../../contexts/loadingContext";
-import { useRef, useState } from "react";
 
-export default function RegistrationModal({ setOpen }) {
+export default function LoginModal({ setOpen }) {
+  const { setToken } = useLoginContext();
   const { loading, setLoading } = useLoadingContext();
-  const [passwordError, setPasswordError] = useState("");
-  const passElement = useRef(null);
   async function handleSumbit(e) {
     try {
       e.preventDefault();
       setLoading(true);
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
-      const res = await register(data);
-      alert(res);
+      const token = await login(data);
+      console.log(token);
+      setToken(token);
       setOpen(false);
     } catch (error) {
       console.error(error);
@@ -33,28 +33,9 @@ export default function RegistrationModal({ setOpen }) {
         <Close />
       </button>
       <form className="column form" onSubmit={handleSumbit}>
-        <h1>Registration form</h1>
+        <h1>Login form</h1>
         <TextField name="username" label="username" />
-        <TextField
-          inputRef={passElement}
-          name="password"
-          label="password"
-          type="password"
-        />
-        <TextField
-          error={passwordError}
-          label="confirmPassword"
-          type="password"
-          onChange={(e) => {
-            if (e.target.value !== passElement.current.value) {
-              setPasswordError("Passwords dont match");
-            } else {
-              setPasswordError("");
-            }
-          }}
-          helperText={passwordError}
-        />
-        <TextField name="name" label="name" />
+        <TextField name="password" label="password" type="password" />
         {loading ? (
           <CircularProgress />
         ) : (

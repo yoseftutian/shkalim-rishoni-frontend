@@ -36,3 +36,23 @@ export async function login(body) {
     throw new Error(error);
   }
 }
+
+export async function register(body) {
+  try {
+    const response = await axios.post(`${SERVER_URL}/users/register`, body);
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function getNews() {
+  try {
+    const response = await axios.get(
+      "https://newsapi.org/v2/everything?q=tesla&from=2024-02-27&sortBy=publishedAt&apiKey=d89bfd384373433c8b801c63ac4f3180"
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}

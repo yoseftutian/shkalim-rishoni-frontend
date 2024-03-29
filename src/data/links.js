@@ -1,5 +1,7 @@
 import ProductPage from "../components/productPage/productPage";
 import About from "../screens/about";
+import Articles from "../screens/articles";
+
 import Contact from "../screens/contact";
 import Generators from "../screens/generators";
 import Home from "../screens/home";
@@ -36,5 +38,10 @@ export const links = [
     title: "Contact",
     href: "/contact",
     element: <Contact />,
+  },
+  {
+    title: "Articles",
+    href: "/articles",
+    element: <Articles />,
   },
 ];

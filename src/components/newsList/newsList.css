@@ -1,0 +1,9 @@
+.article-item {
+  width: 100px;
+  border: 1px solid black;
+}
+
+.article-list {
+  gap: 20px;
+  flex-wrap: wrap;
+}
