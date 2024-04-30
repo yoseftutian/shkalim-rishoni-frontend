@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import RegistrationModal from "../registrationModal/registrationModal";
 import { useLoginContext } from "../../contexts/LoginContext";
-import LoginModal from "../loginModal/loginModal";
+import Login from "../loginModal/loginModal";
 
 export default function Navbar() {
   const [openLogin, setOpenLogin] = useState(false);
